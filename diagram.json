@@ -1,0 +1,60 @@
+{
+    "version": 1,
+    "author": "Anonymous maker",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-st-nucleo-c031c6", "id": "nucleo", "top": 0.83, "left": -0.98, "attrs": {} },
+      {
+        "type": "wokwi-lcd1602",
+        "id": "lcd2",
+        "top": -32,
+        "left": 351.2,
+        "attrs": { "pins": "i2c" }
+      },
+      {
+        "type": "wokwi-pushbutton",
+        "id": "btn1",
+        "top": 150.2,
+        "left": -96,
+        "attrs": { "color": "green", "xray": "1" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 368.75,
+        "left": 336,
+        "attrs": { "value": "220" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": 370.8,
+        "left": 243.8,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-slide-potentiometer",
+        "id": "pot1",
+        "top": -177.4,
+        "left": 171.8,
+        "attrs": { "travelLength": "100" }
+      }
+    ],
+    "connections": [
+      [ "$serialMonitor:TX", "nucleo:PA3", "", [] ],
+      [ "$serialMonitor:RX", "nucleo:PA2", "", [] ],
+      [ "nucleo:GND.9", "lcd2:GND", "black", [ "h0" ] ],
+      [ "nucleo:D14", "lcd2:SDA", "green", [ "h92.67", "v48.83" ] ],
+      [ "nucleo:D15", "lcd2:SCL", "green", [ "v0.83", "h111.87", "v67.2" ] ],
+      [ "nucleo:PA1", "btn1:1.l", "green", [ "h-124.8", "v-124.8" ] ],
+      [ "nucleo:PA6", "r1:1", "green", [ "h0" ] ],
+      [ "led1:A", "r1:2", "green", [ "v0", "h124.8" ] ],
+      [ "nucleo:GND.9", "led1:C", "black", [ "h-31.15", "v278.4" ] ],
+      [ "lcd2:VCC", "nucleo:3V3.2", "red", [ "h0" ] ],
+      [ "pot1:VCC", "nucleo:3V3.2", "red", [ "h0" ] ],
+      [ "pot1:GND", "nucleo:GND.9", "black", [ "v0" ] ],
+      [ "pot1:SIG", "nucleo:PA0", "green", [ "h0" ] ],
+      [ "nucleo:GND.2", "btn1:2.r", "black", [ "h-28.8", "v28.8" ] ]
+    ],
+    "dependencies": {}
+  }
